@@ -1,0 +1,471 @@
+<html>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text-primary);
+  background: var(--color-background-tertiary);
+  line-height: 1.6;
+}
+
+header {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+  border-bottom: 2px solid var(--color-border-secondary);
+  padding: 1.5rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 500;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--color-text-primary);
+}
+
+.hero {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(139, 92, 246, 0.15));
+  padding: 4rem 2rem;
+  text-align: center;
+  border-bottom: 1px solid var(--color-border-tertiary);
+}
+
+.hero-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-size: 42px;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero p {
+  font-size: 18px;
+  color: var(--color-text-secondary);
+  margin-bottom: 2rem;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 12px 32px;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius-md);
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-decoration: none;
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+}
+
+.section {
+  padding: 3rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section h2 {
+  font-size: 28px;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  color: var(--color-text-primary);
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.feature-card {
+  background: var(--color-background-secondary);
+  padding: 2rem;
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--color-border-tertiary);
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+.feature-card:hover {
+  border-color: var(--color-border-primary);
+  transform: translateY(-4px);
+}
+
+.feature-icon {
+  font-size: 32px;
+  margin-bottom: 1rem;
+  color: #3b82f6;
+}
+
+.feature-card h3 {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.feature-card p {
+  color: var(--color-text-secondary);
+  font-size: 14px;
+}
+
+.form-section {
+  background: var(--color-background-secondary);
+  padding: 2.5rem;
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--color-border-tertiary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px 12px;
+  background: var(--color-background-primary);
+  border: 1px solid var(--color-border-tertiary);
+  border-radius: var(--border-radius-md);
+  color: var(--color-text-primary);
+  font-family: inherit;
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.rules-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.rule-card {
+  background: var(--color-background-secondary);
+  padding: 1.5rem;
+  border-radius: var(--border-radius-md);
+  border-left: 4px solid #8b5cf6;
+}
+
+.rule-card h4 {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  font-size: 16px;
+}
+
+.rule-card p {
+  color: var(--color-text-secondary);
+  font-size: 14px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.gallery-item {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2));
+  aspect-ratio: 1;
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--color-border-tertiary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.gallery-item:hover {
+  transform: scale(1.05);
+  border-color: var(--color-border-primary);
+}
+
+.gallery-placeholder {
+  text-align: center;
+  color: var(--color-text-secondary);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  text-align: center;
+}
+
+.stat-item h3 {
+  font-size: 28px;
+  color: #3b82f6;
+  margin-bottom: 0.5rem;
+}
+
+footer {
+  background: var(--color-background-secondary);
+  border-top: 1px solid var(--color-border-tertiary);
+  padding: 2rem;
+  text-align: center;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 32px;
+  }
+  
+  .nav-links {
+    gap: 1rem;
+    font-size: 14px;
+  }
+  
+  .section {
+    padding: 2rem 1rem;
+  }
+}
+</style>
+
+<header>
+  <nav>
+    <div class="logo">⚔️ HYVERSE</div>
+    <ul class="nav-links">
+      <li><a href="#features">Características</a></li>
+      <li><a href="#join">Únete</a></li>
+      <li><a href="#rules">Reglas</a></li>
+      <li><a href="#contact">Contacto</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>Bienvenido a Hyverse</h1>
+    <p>Un mundo RPG inmersivo donde tú defines tu historia. Aventuras épicas, personajes únicos y una comunidad vibrante te esperan.</p>
+    <button class="cta-button" onclick="document.getElementById('join').scrollIntoView({behavior: 'smooth'})">Solicitar Acceso</button>
+  </div>
+</section>
+
+<section id="features" class="section">
+  <h2>Características del Servidor</h2>
+  <div class="features">
+    <div class="feature-card">
+      <div class="feature-icon">🎭</div>
+      <h3>Sistema de Rol Avanzado</h3>
+      <p>Crea tu personaje único con habilidades, rangos y una historia personalizada en nuestro mundo RPG.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🏰</div>
+      <h3>Ciudades Dinámicas</h3>
+      <p>Explora reinos completamente construidos con zonas peligrosas, mazmorrras y secretos por descubrir.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⚔️</div>
+      <h3>Combate Estratégico</h3>
+      <p>Participa en guerras de facciones, mazmorras cooperativas y eventos PvP balanceados.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">💎</div>
+      <h3>Economía Realista</h3>
+      <p>Sistema comercial completo donde los jugadores pueden establecer sus propios negocios y facciones.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎖️</div>
+      <h3>Progressión Significativa</h3>
+      <p>Avanza a través de rangos, desbloquea habilidades nuevas y obtén recompensas exclusivas.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">👥</div>
+      <h3>Comunidad Activa</h3>
+      <p>Únete a una comunidad comprometida que valora el roleplay, la creatividad y la diversión.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Estadísticas del Servidor</h2>
+  <div class="stats">
+    <div class="stat-item">
+      <h3>Próximamente</h3>
+      <p>Lanzamiento oficial</p>
+    </div>
+    <div class="stat-item">
+      <h3>100+</h3>
+      <p>Horas de contenido</p>
+    </div>
+    <div class="stat-item">
+      <h3>5</h3>
+      <p>Reinos principales</p>
+    </div>
+  </div>
+</section>
+
+<section id="join" class="section">
+  <h2>Solicitud de Acceso Whitelist</h2>
+  <div class="form-section">
+    <form onsubmit="handleSubmit(event)">
+      <div class="form-group">
+        <label>Nombre de Usuario Minecraft/Hytale</label>
+        <input type="text" required placeholder="Tu nombre de usuario">
+      </div>
+      <div class="form-group">
+        <label>Correo Electrónico</label>
+        <input type="email" required placeholder="tu@correo.com">
+      </div>
+      <div class="form-group">
+        <label>Edad</label>
+        <input type="number" min="13" required placeholder="18">
+      </div>
+      <div class="form-group">
+        <label>¿Por qué quieres unirte a Hyverse?</label>
+        <textarea required placeholder="Cuéntanos sobre ti y por qué te interesa nuestro servidor..."></textarea>
+      </div>
+      <button type="submit" class="cta-button">Enviar Solicitud</button>
+    </form>
+  </div>
+</section>
+
+<section id="rules" class="section">
+  <h2>Reglas del Servidor</h2>
+  <div class="rules-list">
+    <div class="rule-card">
+      <h4>Respeto Mutuo</h4>
+      <p>Trata a todos los jugadores con respeto. No se tolera el acoso, discriminación ni comportamientos tóxicos.</p>
+    </div>
+    <div class="rule-card">
+      <h4>Roleplay Inmersivo</h4>
+      <p>Mantén tu rol en todo momento. Los nombres y acciones deben ser coherentes con el mundo RPG.</p>
+    </div>
+    <div class="rule-card">
+      <h4>No Griefing</h4>
+      <p>Respetar las construcciones y posesiones de otros jugadores. El griefing resulta en expulsión.</p>
+    </div>
+    <div class="rule-card">
+      <h4>Prohibido Cheating</h4>
+      <p>No se permiten hacks, mods no autorizados ni trucos que den ventaja injusta.</p>
+    </div>
+    <div class="rule-card">
+      <h4>Comunicación Clara</h4>
+      <p>Usa canales apropiados para OOC (Out Of Character). No mezcles chat de rol con mensajes personales.</p>
+    </div>
+    <div class="rule-card">
+      <h4>Compromiso</h4>
+      <p>Se espera actividad regular. Jugadores inactivos más de 30 días pueden perder su slot.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Galería del Servidor</h2>
+  <div class="gallery">
+    <div class="gallery-item">
+      <div class="gallery-placeholder">
+        <div style="font-size: 24px; margin-bottom: 0.5rem;">🏛️</div>
+        <p>Templo Principal</p>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">
+        <div style="font-size: 24px; margin-bottom: 0.5rem;">🏘️</div>
+        <p>Ciudad Capital</p>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">
+        <div style="font-size: 24px; margin-bottom: 0.5rem;">⛰️</div>
+        <p>Montañas Antiguas</p>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">
+        <div style="font-size: 24px; margin-bottom: 0.5rem;">🌲</div>
+        <p>Bosques Encantados</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section" style="text-align: center; border-top: 1px solid var(--color-border-tertiary);">
+  <h2>Información del Servidor</h2>
+  <div style="background: var(--color-background-secondary); padding: 2rem; border-radius: var(--border-radius-lg); display: inline-block;">
+    <p style="margin-bottom: 1rem;">
+      <strong>Estado:</strong> En desarrollo<br>
+      <strong>Versión:</strong> Beta cerrada<br>
+      <strong>Plataforma:</strong> Hytale<br>
+    </p>
+    <p style="color: var(--color-text-secondary); font-size: 14px;">
+      Se aceptan solicitudes para la fase beta. Mantente atento a las actualizaciones.
+    </p>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2024 Hyverse RPG Server. Todos los derechos reservados. Hytale es una marca de Hypixel Studios.</p>
+</footer>
+
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  alert('¡Gracias por tu solicitud! Nos pondremos en contacto pronto. Por ahora, esta es una página de información.');
+}
+</script>
+</html>
